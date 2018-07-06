@@ -1,0 +1,35 @@
+body{
+  margin: 0;
+}
+#canvas{
+  display: block;
+  background: rgb(253, 179, 179);
+}
+.tools{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: #000;
+  z-index: 99;
+}
+.tools button{
+  color: #000;
+  background-color: #eeeeee;
+  border-color: #eeeeee;
+  outline: none;
+}
+.tools button.active{
+  color: #fff;
+  background-color: #108ee9;
+  border-color: #108ee9;
+}
+#tool{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.5);
+}
