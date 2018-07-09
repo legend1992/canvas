@@ -2,6 +2,7 @@
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var erasering = false;
+  var lineWidth = 5;
   autoSetCanvasSize(canvas);
   drawimg();
   toolsInit();
@@ -106,9 +107,9 @@
   // }
   function drawLine(sx,sy,ex,ey) {
     context.beginPath();
-    context.strokeStyle = '#fff';
+    // context.strokeStyle = '#fff';
     context.moveTo(sx,sy);
-    context.lineWidth = 5;
+    context.lineWidth = lineWidth;
     context.lineTo(ex,ey);
     context.stroke();
     context.closePath();
@@ -130,28 +131,58 @@
     var pen = document.getElementById('pen');
     clickEraser();
     clickPen();
+    clear();
+    colorsClick();
+    sizesClick();
+    download();
     function clickEraser() {
       eraser.onclick = function(event) {
-        event.stopPropagation();
-        erasering = !erasering;
-        if(eraser.className !== 'active'){
-          eraser.className = 'active';
-        }else{
-          eraser.className = '';
-          hiddenEraser();
-        }
-        pen.className = '';
+        erasering = true;
+        eraser.classList.add('active');
+        pen.classList.remove('active');
       }
     }
     function clickPen() {
       pen.onclick = function(event) {
-        event.stopPropagation();
         erasering = false;
-        if(pen.className !== 'active'){
-          pen.className = 'active';
-        }
-        eraser.className = '';
+        pen.classList.add('active');
+        eraser.classList.remove('active');
         hiddenEraser();
+      }
+    }
+    function clear() {
+      clearup.onclick = function() {
+        context.clearRect(0,0,canvas.width,canvas.height)
+      }
+    }
+    function download() {
+      save.onclick = function() {
+        var _href = canvas.toDataURL("image/png");
+        var a = document.createElement('a');
+        a.href = _href;
+        a.download = 'my canvas';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+      }
+    }
+    function colorsClick() {
+      colors.onclick = function(event) {
+        var color = event.target.id;
+        var lis = event.target.parentNode.children;
+        for(var i=0; i<lis.length; i++){
+          lis[i].classList.remove('active');
+        }
+        event.target.classList.add('active');
+        context.fillStyle = color;
+        context.strokeStyle = color;
+      }
+    }
+    function sizesClick() {
+      sizes.onclick = function(event) {
+        if(event.target.nodeName==='LI'){
+          lineWidth = event.target.offsetHeight;
+        }
       }
     }
   }

@@ -10,18 +10,32 @@
 <body>
   <canvas id="canvas" width="300" height="300"></canvas>
   <div class="tools">
-    <svg class="icon active">
+    <svg id="pen" class="icon active">
       <use xlink:href="#icon-pen"></use>
     </svg>
-    <svg class="icon">
+    <svg id="eraser" class="icon">
       <use xlink:href="#icon-eraser"></use>
     </svg>
-    <button id="eraser">eraser</button>
-    <button id="pen">pen</button>
+    <svg id="clearup" class="icon">
+      <use xlink:href="#icon-clearup"></use>
+    </svg>
+    <svg id="save" class="icon">
+      <use xlink:href="#icon-clouddownloadyunxiazai"></use>
+    </svg>
     <div id="tool"></div>
   </div>
+  <ul id="colors" class="colors">
+    <li id="black" class="black active"></li>
+    <li id="red" class="red"></li>
+    <li id="green" class="green"></li>
+    <li id="blue" class="blue"></li>
+  </ul>
+  <ul id="sizes" class="sizes">
+    <li class="thin"></li>
+    <li class="thick"></li>
+  </ul>
   <script src="./index.js"></script>
-  <script src="//at.alicdn.com/t/font_737181_wv1rwmmr39.js"></script>
+  <script src="//at.alicdn.com/t/font_737181_nmmm5ioeyv.js"></script>
   <!-- <style>
     body{
       margin: 0;

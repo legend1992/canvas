@@ -3,12 +3,21 @@
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+  transition: all linear .3s;
+  margin-right: 15px;
+}
+#eraser{
+  font-size: 20px;
 }
 .icon.active{
+  transform: scale(1.2);
   color: red;
 }
 body{
   margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 #canvas{
   display: block;
@@ -41,4 +50,52 @@ body{
   height: 20px;
   border-radius: 50%;
   background: rgba(0,0,0,.5);
+}
+.colors{
+  position: fixed;
+  top: 60px;
+  left: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.colors > li{
+  width: 20px;
+  height: 20px;
+  margin: 10px 0;
+  border-radius: 50%;
+  transition: all linear .3s;
+}
+.colors > li.black{
+  background: black;
+}
+.colors > li.red{
+  background: red;
+}
+.colors > li.green{
+  background: green;
+}
+.colors > li.blue{
+  background: blue;
+}
+.colors > li.active{
+  transform: scale(1.2);
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+.sizes{
+  list-style: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  margin: 0;
+  padding: 0;
+}
+.sizes li{
+  margin: 20px 0;
+  height: 5px;
+  width: 20px;
+  background: black;
+}
+.sizes li.thick{
+  height: 10px;
 }
